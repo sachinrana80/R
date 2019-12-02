@@ -1,0 +1,57 @@
+# EXERCISE 2
+# Clear all
+rm(list = ls())
+
+# a.
+RNGkind(sample.kind = "Rounding")
+prop2 <- 1/6
+n <- 100
+expect2 <- n*prop2
+print(expect2)
+# = 16.6667
+
+# b.
+RNGkind(sample.kind = "Rounding")
+n <- 100
+set.seed(1234)
+x <- sample(x = 1:6, size = n, replace = TRUE)
+b <- (x == 2)
+count <- sum(b)
+print(count)
+# = 28
+# The number is not the same because the sample is random
+
+# Comments about set.seed(1234). This command is to ensure reproducibility. Suppose we want to go back at a later point
+# and reproduce the simulated numbers from this exercise. We will be able to do so if we use the same seed (in this case: 1234). 
+
+# Comment about the number "28". Different versions of the random number generator in R may produce different results.
+# To have the same result as above, use the command: RNGkind(sample.kind = "Rounding") before the set.seet() command.
+# That will take to an older version of the random number generator, which will produce the number "28".  
+
+
+# c.
+prop2 <- 1/6
+n <- 1000
+expect2 <- n*prop2
+print(expect2)
+# = 166.6667
+
+set.seed(1234)
+x <- sample(x = 1:6, size = n, replace = TRUE)
+b <- (x == 2)
+count <- sum(b)
+print(count)
+# = 181
+
+prop2 <- 1/6
+n <- 10000
+expect2 <- n*prop2
+print(expect2)
+# = 1666.667
+
+set.seed(1234)
+x <- sample(x = 1:6, size = n, replace = TRUE)
+b <- (x == 2)
+count <- sum(b)
+print(count)
+# = 1667
